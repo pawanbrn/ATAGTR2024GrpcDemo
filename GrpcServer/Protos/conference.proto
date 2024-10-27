@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "TestConference";
+
+package conference;
+
+message GetConferenceRequest {
+  string topicId = 1;	
+}
+
+message GetConferenceResponse {
+  string topicId = 1;	
+  string title = 2;
+  string author = 3;
+  string conferenceType = 4;
+  int32 duration = 5;
+  optional string coauthor = 6;
+}
+
+service OrganizingATAGTR {
+  rpc GetSpeakerDetails(GetConferenceRequest) returns (GetConferenceResponse);
+}

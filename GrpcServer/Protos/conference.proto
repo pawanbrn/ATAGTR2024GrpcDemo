@@ -8,7 +8,7 @@ message GetConferenceRequest {
   string topicId = 1;	
 }
 
-message GetConferenceResponse {
+message ConferenceData {
   string topicId = 1;	
   string title = 2;
   string author = 3;
@@ -17,6 +17,13 @@ message GetConferenceResponse {
   optional string coauthor = 6;
 }
 
+message CreateConferenceResponse {
+  string success = 1;	
+  string author = 2;
+  string title = 3;
+}
+
 service OrganizingATAGTR {
-  rpc GetSpeakerDetails(GetConferenceRequest) returns (GetConferenceResponse);
+  rpc GetSpeakerDetails(GetConferenceRequest) returns (ConferenceData);
+  rpc CreateSpeakerDetails(ConferenceData) returns (CreateConferenceResponse);
 }

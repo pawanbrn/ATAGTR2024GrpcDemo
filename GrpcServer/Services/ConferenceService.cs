@@ -42,7 +42,7 @@ namespace GrpcServer.Services
             _logger.LogInformation("Received request to: CreateSpeakerDetails");
 
             const string connectionString = @"Data Source=(localdb)\localdb;Initial Catalog=Speakers;Integrated Security=True;";
-            string query = $"insert into dbo.SpeakerList (topicId, title, author, conferenceType, duration, coauthor) values ('{request.TopicId}', '{request.Title}', '{request.Author}', '{request.ConferenceType}', {request.Duration}, null)";
+            string query = $"insert into dbo.SpeakerList (topicId, title, author, conferenceType, duration, coauthor) values ('{request.TopicId}', '{request.Title}', '{request.Author}', '{request.ConferenceType}', {request.Duration}, '{request.Coauthor}')";
             await using SqlConnection conn = new(connectionString);
             conn.Open();
             await using SqlCommand cmd = new SqlCommand(query, conn);

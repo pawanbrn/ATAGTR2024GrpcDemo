@@ -5,11 +5,11 @@ option csharp_namespace = "TestConference";
 package conference;
 
 message GetConferenceRequest {
-  string topicId = 1;	
+  int32 topicId = 1;	
 }
 
 message ConferenceData {
-  string topicId = 1;	
+  int32 topicId = 1;	
   string title = 2;
   string author = 3;
   string conferenceType = 4;
@@ -18,9 +18,10 @@ message ConferenceData {
 }
 
 message CreateConferenceResponse {
-  string success = 1;	
-  string author = 2;
-  string title = 3;
+  int32 topicId = 1;	
+  string success = 2;	
+  string author = 3;
+  string title = 4;
 }
 
 service OrganizingATAGTR {

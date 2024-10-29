@@ -25,7 +25,7 @@ namespace GrpcServer.Services
             {
                 response = new ConferenceData
                 {
-                    TopicId = reader["topicId"].ToString(),
+                    TopicId = Convert.ToInt32(reader["topicId"].ToString()),
                     Title = reader["title"].ToString(),
                     Author = reader["author"].ToString(),
                     Coauthor = reader["coauthor"].ToString(),
@@ -51,6 +51,7 @@ namespace GrpcServer.Services
             var response = new CreateConferenceResponse
             {
                 Success = "Ok",
+                TopicId = request.TopicId,
                 Author = request.Author,
                 Title = request.Title,
             };

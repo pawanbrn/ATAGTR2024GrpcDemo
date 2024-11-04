@@ -19,7 +19,7 @@ namespace Grpc.Test
 
             var request = new ConferenceData
             {
-                TopicId = RandomNumber.Next(1, 10000),
+                TopicId = RandomNumber.Next(1, 10000).ToString(),
                 Title = $"GRPC Lab Demo {RandomNumber.Next(60, 100)}",
                 Author = Name.FullName(),
                 Coauthor = Name.Last(),
@@ -51,7 +51,7 @@ namespace Grpc.Test
 
             GetConferenceRequest requestGet = new()
             {
-                TopicId = 8776
+                TopicId = "8776"
             };
 
             // response to get new conference entry by using topicId

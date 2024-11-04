@@ -51,7 +51,7 @@ namespace Grpc.Test
 
             GetConferenceRequest requestGet = new()
             {
-                TopicId = "8776"
+                TopicId = "7229"
             };
 
             // response to get new conference entry by using topicId

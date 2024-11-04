@@ -14,22 +14,13 @@ namespace GrpcServer.Services
 
         public override async Task<CreateConferenceResponse> CreateSpeakerDetails(ConferenceData request, ServerCallContext context)
         {
-            try
-            {
-                await using (var appDbContext = new EntityModelContext())
-                {
-                    ConferenceDataModel c = request.MapToConferenceData();
+            _logger.LogInformation("Received request to: CreateSpeakerDetails");
 
-                    await appDbContext.ConferenceDataModel.AddAsync(c);
-                    await appDbContext.SaveChangesAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+            await using var appDbContext = new EntityModelContext();
+            ConferenceDataModel conferenceData = request.MapToConferenceData();
 
-
+            await appDbContext.ConferenceDataModel.AddAsync(conferenceData);
+            await appDbContext.SaveChangesAsync();
 
             var response = new CreateConferenceResponse
             {

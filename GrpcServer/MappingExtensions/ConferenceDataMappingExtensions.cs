@@ -14,4 +14,14 @@ public static class ConferenceDataMappingExtensions
         Duration = conferenceData.Duration,
         Coauthor = conferenceData.Coauthor,
     };
+
+    public static ConferenceData MapToConferenceDataModel(this ConferenceDataModel conferenceDataModel) => new()
+    {
+        TopicId = conferenceDataModel.TopicId,
+        Title = conferenceDataModel.Title,
+        Author = conferenceDataModel.Author,
+        ConferenceType = conferenceDataModel.ConferenceType,
+        Duration = conferenceDataModel.Duration,
+        Coauthor = conferenceDataModel.Coauthor,
+    };
 }

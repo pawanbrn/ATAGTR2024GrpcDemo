@@ -6,7 +6,7 @@ namespace GrpcServer.Model
     public class ConferenceDataModel()
     {
         [Key]
-        public required int TopicId { get; set; }
+        public required string TopicId { get; set; }
         public required string Title { get; set; }
         public required string Author { get; set; }
         public required string ConferenceType { get; set; }

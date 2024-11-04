@@ -14,7 +14,7 @@ var client = new OrganizingATAGTR.OrganizingATAGTRClient(channel);
 // request to create new conference entry
 var requestCreate = new ConferenceData
 {
-    TopicId = RandomNumber.Next(1, 10000),
+    TopicId = RandomNumber.Next(1, 10000).ToString(),
     Title = $"GRPC_Demo {RandomNumber.Next(60, 100)}",
     Author = Name.FullName(),
     Coauthor = string.Empty,
@@ -29,7 +29,7 @@ Console.WriteLine(createResponse.ToString());
 // request to get new conference entry by using topicId
 GetConferenceRequest requestGet = new()
 {
-    TopicId = Convert.ToInt32(requestCreate.TopicId)
+    TopicId = requestCreate.TopicId
 };
 
 // response to get new conference entry by using topicId

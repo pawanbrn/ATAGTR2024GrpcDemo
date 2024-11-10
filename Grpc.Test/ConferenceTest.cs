@@ -1,22 +1,24 @@
 using Faker;
 using TestConference;
 using FluentAssertions;
-using Grpc.Net.Client;
+using Grpc.Test.GrpcClient;
 
 namespace Grpc.Test
 {
     [TestClass]
     public class ConferenceTest
     {
+        private ConferenceClient? conferenceClient;
+
+        [TestInitialize]
+        public void Start()
+        {
+            conferenceClient = new ConferenceClient();
+        }
+
         [TestMethod]
         public async Task CreateConferenceDetail()
         {
-            // gRPC Channel
-            using var channel = GrpcChannel.ForAddress("http://localhost:5000");
-
-            // gRPC client
-            var client = new OrganizingATAGTR.OrganizingATAGTRClient(channel);
-
             var request = new ConferenceData
             {
                 TopicId = RandomNumber.Next(1, 10000).ToString(),
@@ -36,27 +38,21 @@ namespace Grpc.Test
             };
 
             // response of created conference entry
-            var createResponse = await client.CreateSpeakerDetailsAsync(request);
+            var createResponse = await conferenceClient!.CreateSpeakerDetailsAsync(request);
             createResponse.Should().NotBeNull();
             createResponse.Should().BeEquivalentTo(expectedResponse);
         }
 
         [TestMethod]
         public async Task GetConferenceDetailByTopicId()
-        {
-            // gRPC Channel
-            using var channel = GrpcChannel.ForAddress("http://localhost:5000");
-
-            // gRPC client
-            var client = new OrganizingATAGTR.OrganizingATAGTRClient(channel);
-
+        { 
             GetConferenceRequest requestGet = new()
             {
                 TopicId = "7229"
             };
 
             // response to get new conference entry by using topicId
-            var getResponse = await client.GetSpeakerDetailsAsync(requestGet);
+            var getResponse = await conferenceClient!.GetSpeakerDetailsAsync(requestGet);
             getResponse.Should().NotBeNull();
             getResponse.TopicId.Should().Be(requestGet.TopicId);
         }

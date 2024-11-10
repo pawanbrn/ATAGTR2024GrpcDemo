@@ -35,6 +35,7 @@ namespace Grpc.Test
                 Title = request.Title,
             };
 
+            // response of created conference entry
             var createResponse = await client.CreateSpeakerDetailsAsync(request);
             createResponse.Should().NotBeNull();
             createResponse.Should().BeEquivalentTo(expectedResponse);

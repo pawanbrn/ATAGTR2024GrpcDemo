@@ -63,74 +63,21 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task Test3_UpdateConferenceDetails()
+        public Task Test3_UpdateConferenceDetails()
         {
-            string? storedTopicId = GetConferenceTopicId();
-
-            var requestUpdate = new ConferenceData
-            {
-                TopicId = storedTopicId,
-                Title = $"GRPC_Demo_update {RandomNumber.Next(60, 100)}",
-                Author = Name.FullName(),
-                Coauthor = $"Updated Name {Name.First}",
-                ConferenceType = $"Lab_Workshop_Virtual_Update{RandomNumber.Next(1, 100)}",
-                Duration = RandomNumber.Next(60, 100)
-            };
-
-            var expectedResponse = new UpdateConferenceResponse
-            {
-                Success = "Updated",
-                TopicId = storedTopicId,
-            };
-
-            // response to update conference entry
-            var updateResponse = await conferenceClient!.UpdateSpeakerDetailsAsync(requestUpdate);
-            updateResponse.Should().NotBeNull();
-            updateResponse.Should().BeEquivalentTo(expectedResponse);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
-        public async Task Test4_UpdateNonExistingConferenceDetails()
+        public Task Test4_UpdateNonExistingConferenceDetails()
         {
-            const string nonExistingTopicId = "123456";
-            var requestUpdate = new ConferenceData
-            {
-                TopicId = nonExistingTopicId,
-                Title = $"GRPC_Demo_update {RandomNumber.Next(60, 100)}"
-            };
-
-            var expectedResponse = new UpdateConferenceResponse
-            {
-                Success = "Failure, No existing topic id found to update",
-                TopicId = nonExistingTopicId,
-            };
-
-            // response to update non existing conference entry
-            var updateResponse = await conferenceClient!.UpdateSpeakerDetailsAsync(requestUpdate);
-            updateResponse.Should().NotBeNull();
-            updateResponse.Should().BeEquivalentTo(expectedResponse);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
-        public async Task Test5_DeleteConferenceDetails()
+        public Task Test5_DeleteConferenceDetails()
         {
-            var storedTopicId = string.Empty;
-            storage?.TryGetValue(TopicId, out storedTopicId);
-            DeleteConferenceRequest requestDelete = new()
-            {
-                TopicId = storedTopicId
-            };
-
-            var expectedResponse = new DeleteConferenceResponse
-            {
-                Success = "Deleted",
-                TopicId = storedTopicId,
-            };
-
-            // response to delete conference entry
-            var updateResponse = await conferenceClient!.DeleteSpeakerDetailsAsync(requestDelete);
-            updateResponse.Should().NotBeNull();
-            updateResponse.Should().BeEquivalentTo(expectedResponse);
+            throw new NotImplementedException();
         }
 
         private string GetConferenceTopicId()

@@ -1,0 +1,54 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="Grpc.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="Grpc.Test" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="ConferenceTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CreateConferenceDetail" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CreateConferenceDetail" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="GetConferenceDetailByTopicId" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="GetConferenceDetailByTopicId" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="UpdateConferenceDetails" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="UpdateConferenceDetails" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="UpdateNonExistingConferenceDetails" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="UpdateNonExistingConferenceDetails" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="DeleteConferenceDetails" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="DeleteConferenceDetails" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

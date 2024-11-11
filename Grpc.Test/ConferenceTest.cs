@@ -8,7 +8,7 @@ namespace Grpc.Test
     [TestClass]
     public class ConferenceTest
     {
-        private readonly string TopicId = "7229";
+        private readonly string TopicId = "8844";
         private ConferenceClient? conferenceClient;
         private static readonly Dictionary<string, string>? storage = [];
 
@@ -19,7 +19,7 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task CreateConferenceDetail()
+        public async Task Test1_CreateConferenceDetail()
         {
             var request = new ConferenceData
             {
@@ -47,7 +47,7 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task GetConferenceDetailByTopicId()
+        public async Task Test2_GetConferenceDetailByTopicId()
         {
             string? storedTopicId = GetConferenceTopicId();
 
@@ -63,7 +63,7 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task UpdateConferenceDetails()
+        public async Task Test3_UpdateConferenceDetails()
         {
             string? storedTopicId = TopicId;
 
@@ -90,7 +90,7 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task UpdateNonExistingConferenceDetails()
+        public async Task Test4_UpdateNonExistingConferenceDetails()
         {
             const string nonExistingTopicId = "123456";
             var requestUpdate = new ConferenceData
@@ -112,9 +112,10 @@ namespace Grpc.Test
         }
 
         [TestMethod]
-        public async Task DeleteConferenceDetails()
+        public async Task Test5_DeleteConferenceDetails()
         {
-            string? storedTopicId = GetConferenceTopicId();
+            var storedTopicId = string.Empty;
+            storage?.TryGetValue(TopicId, out storedTopicId);
             DeleteConferenceRequest requestDelete = new()
             {
                 TopicId = storedTopicId

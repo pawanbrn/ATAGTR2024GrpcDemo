@@ -8,7 +8,7 @@ namespace Grpc.Test
     [TestClass]
     public class ConferenceTest
     {
-        private readonly string TopicId = "8844";
+        private readonly string TopicId = "8083";
         private ConferenceClient? conferenceClient;
         private static readonly Dictionary<string, string>? storage = [];
 
@@ -65,7 +65,7 @@ namespace Grpc.Test
         [TestMethod]
         public async Task Test3_UpdateConferenceDetails()
         {
-            string? storedTopicId = TopicId;
+            string? storedTopicId = GetConferenceTopicId();
 
             var requestUpdate = new ConferenceData
             {

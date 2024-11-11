@@ -23,5 +23,15 @@ namespace Grpc.Test.GrpcClient
         {
             return await _organizingATAGTRClient.GetSpeakerDetailsAsync(request);
         }
+
+        public async Task<Contract.UpdateConferenceResponse> UpdateSpeakerDetailsAsync(Contract.ConferenceData request)
+        {
+            return await _organizingATAGTRClient.UpdateSpeakerDetailsAsync(request);
+        }
+
+        public async Task<Contract.DeleteConferenceResponse> DeleteSpeakerDetailsAsync(Contract.DeleteConferenceRequest request)
+        {
+            return await _organizingATAGTRClient.DeleteSpeakerDetailsAsync(request);
+        }
     }
 }

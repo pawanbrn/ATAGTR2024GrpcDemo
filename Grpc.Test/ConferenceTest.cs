@@ -9,6 +9,7 @@ namespace Grpc.Test
     public class ConferenceTest
     {
         private ConferenceClient? conferenceClient;
+        private readonly string TopicId = "7229";
 
         [TestInitialize]
         public void Start()
@@ -45,16 +46,32 @@ namespace Grpc.Test
 
         [TestMethod]
         public async Task GetConferenceDetailByTopicId()
-        { 
+        {
             GetConferenceRequest requestGet = new()
             {
-                TopicId = "7229"
+                TopicId = TopicId
             };
 
             // response to get new conference entry by using topicId
             var getResponse = await conferenceClient!.GetSpeakerDetailsAsync(requestGet);
             getResponse.Should().NotBeNull();
             getResponse.TopicId.Should().Be(requestGet.TopicId);
+        }
+
+        [TestMethod]
+        public async Task UpdateConferenceDetails()
+        {
+            var requestUpdate = new ConferenceData
+            {
+                TopicId = TopicId,
+                Title = $"GRPC_Demo_update {RandomNumber.Next(60, 100)}",
+                Author = Name.FullName(),
+                Coauthor = $"Updated Name {Name.First}",
+                ConferenceType = $"Lab_Workshop_Virtual_Update{RandomNumber.Next(1, 100)}",
+                Duration = RandomNumber.Next(60, 100)
+            };
+
+            var updateResponse = await conferenceClient!.UpdateSpeakerDetailsAsync(requestUpdate);
         }
     }
 }

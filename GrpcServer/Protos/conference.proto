@@ -4,27 +4,43 @@ option csharp_namespace = "TestConference";
 
 package conference;
 
-message GetConferenceRequest {
-  string topicId = 1;	
+message ConferenceData {
+	string topicId = 1;	
+	string title = 2;
+	string author = 3;
+	string conferenceType = 4;
+	int32 duration = 5;
+	optional string coauthor = 6;
 }
 
-message ConferenceData {
-  string topicId = 1;	
-  string title = 2;
-  string author = 3;
-  string conferenceType = 4;
-  int32 duration = 5;
-  optional string coauthor = 6;
+message GetConferenceRequest {
+	string topicId = 1;	
 }
 
 message CreateConferenceResponse {
-  string topicId = 1;	
-  string success = 2;	
-  string author = 3;
-  string title = 4;
+	string success = 1;	
+	string topicId = 2;	
+	string author = 3;
+	string title = 4;
+}
+
+message UpdateConferenceResponse {
+	string success = 1;	
+	string topicId = 2;	
+}
+
+message DeleteConferenceRequest {
+	string topicId = 1;
+}
+
+message DeleteConferenceResponse {
+	string success = 1;	
+	string topicId = 2;	
 }
 
 service OrganizingATAGTR {
-  rpc GetSpeakerDetails(GetConferenceRequest) returns (ConferenceData);
-  rpc CreateSpeakerDetails(ConferenceData) returns (CreateConferenceResponse);
+	rpc CreateSpeakerDetails(ConferenceData) returns (CreateConferenceResponse);
+	rpc GetSpeakerDetails(GetConferenceRequest) returns (ConferenceData);
+	rpc UpdateSpeakerDetails(ConferenceData) returns (UpdateConferenceResponse);
+	rpc DeleteSpeakerDetails(DeleteConferenceRequest) returns (DeleteConferenceResponse);
 }

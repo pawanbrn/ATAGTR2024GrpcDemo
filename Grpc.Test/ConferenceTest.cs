@@ -8,7 +8,7 @@ namespace Grpc.Test
     [TestClass]
     public class ConferenceTest
     {
-        private readonly string TopicId = "8083";
+        private readonly string TopicId = "5499";
         private ConferenceClient? conferenceClient;
         private static readonly Dictionary<string, string>? storage = [];
 
@@ -72,7 +72,7 @@ namespace Grpc.Test
                 TopicId = storedTopicId,
                 Title = $"GRPC_Demo_update {RandomNumber.Next(60, 100)}",
                 Author = Name.FullName(),
-                Coauthor = $"Updated Name {Name.First}",
+                Coauthor = $"Updated Name {Name.First()}",
                 ConferenceType = $"Lab_Workshop_Virtual_Update{RandomNumber.Next(1, 100)}",
                 Duration = RandomNumber.Next(60, 100)
             };

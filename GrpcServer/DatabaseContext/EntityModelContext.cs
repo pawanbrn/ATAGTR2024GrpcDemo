@@ -11,8 +11,8 @@ public class EntityModelContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //optionsBuilder.UseSqlServer(@"Data Source=(localdb)\localdb;Initial Catalog=Speakers;Integrated Security=True;");
-        optionsBuilder.UseSqlServer(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Speakers;Integrated Security=True;TrustServerCertificate=true");
+        optionsBuilder.UseSqlServer(@"Data Source=(localdb)\localdb;Initial Catalog=Speakers;Integrated Security=True;");
+        //optionsBuilder.UseSqlServer(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Speakers;Integrated Security=True;TrustServerCertificate=true");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
